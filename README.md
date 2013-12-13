@@ -38,7 +38,7 @@ Alternatively you can directly add source files to your project.
 BOOL isSupported = [[UIDevice currentDevice] isSupportedOS7Features];
 ```
 
-* Check if device support iOS 7 new features
+* Check if device support iOS 7 new features (not include support simulator)
 
 ```objective-c
 #import "UIDevice+ScreenSize.h"
