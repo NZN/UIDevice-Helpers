@@ -12,5 +12,5 @@ Pod::Spec.new do |s|
   s.authors = { 'Bruno Tortato Furtado' => 'bruno.furtado@gruponzn.com'}
   
   s.source_files = 'UIDevice-Helpers/*.{h,m}'
-  s.source = { :git => 'https://github.com/NZN/UIDevice-Helpers.git', :tag => '0.0.3' }
+  s.source = { :git => 'https://github.com/NZN/UIDevice-Helpers.git', :tag => '0.0.1' }
 end
