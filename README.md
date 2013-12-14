@@ -18,7 +18,7 @@ You will need LLVM 3.0 or later in order to build UIDevice-Helpers.
 
 [CocoaPods](http://cocoapods.org) is the recommended way to add UIDevice-Helpers to your project.
 
-* Add a pod entry for UIDevice-Helpers to your Podfile `pod 'UIDevice-Helpers', :git => 'https://github.com/NZN/UIDevice-Helpers'`
+* Add a pod entry for UIDevice-Helpers to your Podfile `pod 'UIDevice-Helpers', '~> 0.0.1'`
 * Install the pod(s) by running `pod install`.
 
 ### Source files
