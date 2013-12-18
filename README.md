@@ -3,6 +3,8 @@
 Easy access to device information.
 
 [![Build Status](https://api.travis-ci.org/NZN/UIDevice-Helpers.png)](https://api.travis-ci.org/NZN/UIDevice-Helpers.png)
+[![Cocoapods](https://cocoapod-badges.herokuapp.com/v/UIDevice-Helpers/badge.png)](http://beta.cocoapods.org/?q=name%3Auidevice%20name%3Ahelpers%2A)
+[![Cocoapods](https://cocoapod-badges.herokuapp.com/p/UIDevice-Helpers/badge.png)](http://beta.cocoapods.org/?q=name%3Auidevice%20name%3Ahelpers%2A)
 
 ## Requirements
 
