@@ -1,4 +1,4 @@
-#UIDevice-Helpers
+#UIDevice-Helpers ![License MIT](https://go-shields.herokuapp.com/license-MIT-blue.png)
 
 Easy access to device information.
 
