@@ -23,5 +23,6 @@ typedef NS_ENUM(NSInteger, UIDeviceModelPad) {
 @interface UIDevice (Hardware)
 
 - (BOOL)isSupportedOS7Features;
+- (NSString *)modelVersion;
 
 @end
