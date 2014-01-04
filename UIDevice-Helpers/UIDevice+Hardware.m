@@ -14,6 +14,7 @@ static NSString *const kPhone = @"iPhone";
 static NSString *const kPad = @"iPad";
 
 static NSInteger SupportedModel;
+static NSString* ModelVersion;
 
 @implementation UIDevice (Hardware)
 
@@ -39,39 +40,54 @@ static NSInteger SupportedModel;
     if (SupportedModel != -1)
         return SupportedModel;
     
-    size_t size;
-    char *model;
-    
-    sysctlbyname("hw.machine", NULL, &size, NULL, 0);
-    model = malloc(size);
-    sysctlbyname("hw.machine", model, &size, NULL, 0);
-    
-    NSString *modelVersion = [NSString stringWithCString:model encoding:NSUTF8StringEncoding];
-    free(model);
-    
-    NSLog(@"modelVersion: %@", modelVersion);
-    
-    if (modelVersion) {
+    if ([self modelVersion]) {
         SupportedModel = NO;
         NSString *stringVersion = nil;
         
-        if ([modelVersion rangeOfString:kPod].location != NSNotFound) {
-            stringVersion = [modelVersion stringByReplacingOccurrencesOfString:kPod withString:@""];
+        if ([[self modelVersion] rangeOfString:kPod].location != NSNotFound) {
+            stringVersion = [[self modelVersion] stringByReplacingOccurrencesOfString:kPod withString:@""];
             SupportedModel = ([stringVersion integerValue] >= UIDeviceModelPod5);
         }
         
-        else if ([modelVersion rangeOfString:kPhone].location != NSNotFound) {
-            stringVersion = [modelVersion stringByReplacingOccurrencesOfString:kPhone withString:@""];
+        else if ([[self modelVersion] rangeOfString:kPhone].location != NSNotFound) {
+            stringVersion = [[self modelVersion] stringByReplacingOccurrencesOfString:kPhone withString:@""];
             SupportedModel = ([stringVersion integerValue] >= UIDeviceModelPhone4S);
         }
         
-        else if ([modelVersion rangeOfString:kPad].location != NSNotFound) {
-            stringVersion = [modelVersion stringByReplacingOccurrencesOfString:kPad withString:@""];
+        else if ([[self modelVersion] rangeOfString:kPad].location != NSNotFound) {
+            stringVersion = [[self modelVersion] stringByReplacingOccurrencesOfString:kPad withString:@""];
             SupportedModel = ([stringVersion integerValue] >= UIDeviceModelPad3);
         }
     }
     
     return SupportedModel;
+}
+
+- (NSString *)modelVersion
+{
+    if (!ModelVersion) {
+        size_t size;
+        char *model;
+        
+        sysctlbyname("hw.machine", NULL, &size, NULL, 0);
+        model = malloc(size);
+        sysctlbyname("hw.machine", model, &size, NULL, 0);
+        
+        ModelVersion = [NSString stringWithCString:model encoding:NSUTF8StringEncoding];
+        free(model);
+        
+        if ([ModelVersion rangeOfString:kPod options:NSCaseInsensitiveSearch].location == NSNotFound
+            && [ModelVersion rangeOfString:kPhone options:NSCaseInsensitiveSearch].location == NSNotFound
+            && [ModelVersion rangeOfString:kPad options:NSCaseInsensitiveSearch].location == NSNotFound) {
+            ModelVersion = [self model];
+        }
+    }
+    
+#ifdef NZDEBUG
+    NSLog(@"%s: %@", __PRETTY_FUNCTION__, ModelVersion);
+#endif
+    
+    return ModelVersion;
 }
 
 @end
