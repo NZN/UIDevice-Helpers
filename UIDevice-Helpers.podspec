@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'UIDevice-Helpers'
-  s.version = '0.0.2'
+  s.version = '0.0.3'
   s.license = { :type => 'MIT', :file => 'LICENSE' }
   s.summary = 'UIDevice category. Easy access to device information.'
   s.homepage = 'https://github.com/NZN/UIDevice-Helpers'
@@ -12,5 +12,5 @@ Pod::Spec.new do |s|
   s.authors = { 'Bruno Tortato Furtado' => 'bruno.furtado@gruponzn.com'}
   
   s.source_files = 'UIDevice-Helpers/*.{h,m}'
-  s.source = { :git => 'https://github.com/NZN/UIDevice-Helpers.git', :tag => '0.0.2' }
+  s.source = { :git => 'https://github.com/NZN/UIDevice-Helpers.git', :tag => '0.0.3' }
 end
